@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block body %}
+  <div id = "header">
+  <a href="/" id="title"><h1>Six Degrees Of Philosophy</h1></a>  
+  </div>
+  <div id ="info">
+  <Strong> 
+  </br>{{ title }} 
+  </br>Score : {{session['score']}}
+  </Strong>
+  </div>
+  <div id="message">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+	  {% if messages %}
+		{% for category,message in messages %}
+			{% if category == 'error' %}
+			  <h3>{{message}}</h3>
+			{% else %}
+			  <h2>{{message}}</h2>
+			{% endif %}
+		{% endfor %}
+	  {% endif %}
+  {% endwith %}
+  </div>
+  <div id="content">
+	  <form action = "move" method = "POST">
+	  <input type = "hidden" name ="currentPage" value = '{{ title }}'>
+	  
+	  {% for link in links %}
+		  {% if loop.index == loop.first %}
+			  <span><input type= "radio" id = {{loop.index}} name ="choice" value = '{{link}}' checked/><label for={{loop.index}}> {{link}} </label></span><br/>
+		  {% else %}
+			  <span><input type= "radio" id = {{loop.index}} name ="choice" value = '{{link}}'/><label for={{loop.index}}> {{link}} </label></span><br/>
+		  {% endif %}
+	  {% endfor %}
+	  <br/><br/>
+	  <span><input type= "radio" id = 11 name ="choice" value = 'Philosophy'/><label for=11> Philosophy </label></span><br/><br/>
+	  <input type ="submit" class="submit" value = "Move">
+	  </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Six degrees to philosophy</title>
+  </head>
+  <body>
+    {% block body %}
+	<div id = "header">
+	<a href="/" id="title"><h1>Six Degrees Of Philosophy</h1></a>
+	</div>
+	<div id="message">
+	{% with messages = get_flashed_messages(with_categories=true) %}
+	  {% if messages %}
+	   {% for category,message in messages %}
+			{% if category == 'error' %}
+			  <h3>{{message}}</h3>
+			{% else %}
+			  <h2>{{message}}</h2>
+			{% endif %}
+		  {% if message.startswith("Con")%}
+			  {% if session['score'] > 1 %}
+				<h2>You Scored {{session['score']}} Points </h2> 
+			  {% else %}
+				<h2>You Scored {{session['score']}} Points </h2> 
+			  {% endif %}				  
+		   {% endif %}
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+	</div>
+	<div id="content">
+		<form action = "new_game" method="POST">
+			<input type = "text" name="title" id="title" placeholder ="Starting page's title">
+			<input type = "submit" class="submit" value = "New Game">
+		</form> 
+	</div>
+    {% endblock %}
+	
+  </body>
+</html>
