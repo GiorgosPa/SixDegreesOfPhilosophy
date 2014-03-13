@@ -7,3 +7,5 @@ The user starts at a Wikipedia article of their choice, he is presented with the
 few internal links on this Wikipedia article, and chooses one of these links to move
 to the corresponding article. The goal of the game is to reach the "Philosophy" article
 following links in this fashion, in the minimal number of steps.
+
+This is a class project for the course Web Technologies at Telecom ParisTec
