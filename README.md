@@ -8,4 +8,4 @@ few internal links on this Wikipedia article, and chooses one of these links to 
 to the corresponding article. The goal of the game is to reach the "Philosophy" article
 following links in this fashion, in the minimal number of steps.
 
-This is a class project for the course Web Technologies at Telecom ParisTech.
+This is a class project for the 'Web Technologies' course at Telecom ParisTech.
